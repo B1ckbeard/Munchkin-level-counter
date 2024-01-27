@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/munchkin_level_counter/static/css/main.012d5d6f.css",
+    "main.js": "/munchkin_level_counter/static/js/main.b811f7ca.js",
+    "index.html": "/munchkin_level_counter/index.html",
+    "main.012d5d6f.css.map": "/munchkin_level_counter/static/css/main.012d5d6f.css.map",
+    "main.b811f7ca.js.map": "/munchkin_level_counter/static/js/main.b811f7ca.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.012d5d6f.css",
+    "static/js/main.b811f7ca.js"
+  ]
+}
