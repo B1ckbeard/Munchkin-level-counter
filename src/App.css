@@ -1,0 +1,11 @@
+@font-face {
+    font-family: 'munchkin';
+    src: url('./components/fonts/munchkin.ttf');
+  }
+
+.App {
+    font-family: 'munchkin', sans-serif;
+    background-color: rgb(234, 221, 202);
+    min-height: 100vh;
+    padding-top: 10px;
+}

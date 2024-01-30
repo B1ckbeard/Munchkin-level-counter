@@ -44,11 +44,11 @@ function MainPage() {
             <section className='section__main'>
                 <div className="d-flex w-100 position-fixed gap-2 bottom-0 justify-content-end p-4">
                     <Button onClick={handleShowModal} variant="success" size="lg" className='rounded-5 d-flex align-items-center'>
-                        <PersonPlusFill size={50} />
+                        <PersonPlusFill size={40} />
                     </Button>
                     {counters.length !== 0 && (
                     <Button onClick={handleShowDelete} variant="danger" size="lg" className='rounded-5 d-flex align-items-center'>
-                        <PersonXFill size={50} />
+                        <PersonXFill size={40} />
                     </Button>
                     )}
                 </div>
@@ -56,7 +56,7 @@ function MainPage() {
                     {counters.length === 0 ? (
                         <div className="empty__descr">
                             <h2 className="text-center mt-2">Список пуст</h2>
-                            <p className='text-center mt-2 px-2'>Чтобы добавить игрока, нажмите на кнопку внизу экрана</p>
+                            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите на кнопку внизу экрана</p>
                         </div>
                     ) : (
                         counters.map((counter, index) => (
@@ -85,7 +85,7 @@ function MainPage() {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={addComponent} variant="success" size="lg" className='p-0 d-flex rounded-5 align-items-center'>
-                            <PlusLg size={50} />
+                            <PlusLg size={40} />
                         </Button>
                     </Modal.Footer>
                 </Modal>

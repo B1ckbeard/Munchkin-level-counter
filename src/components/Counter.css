@@ -1,5 +1,6 @@
 .container {
-    border: 5px solid rgb(92, 64, 51);
+    border: 5px solid rgb(111, 78, 55);
     border-radius: 14px;
     min-width: 370px;
+    background-color:white;
 }
