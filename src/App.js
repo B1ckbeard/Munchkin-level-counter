@@ -1,10 +1,10 @@
 import React from 'react';
-import UserModal from './components/UserModal';
+import MainPage from './components/MainPage';
 
 function App() {
     return (
         <div className="App">
-            <UserModal/>
+            <MainPage/>
         </div>
     );
 }
