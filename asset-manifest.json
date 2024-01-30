@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/munchkin_level_counter/static/css/main.012d5d6f.css",
-    "main.js": "/munchkin_level_counter/static/js/main.b811f7ca.js",
+    "main.css": "/munchkin_level_counter/static/css/main.b1da35aa.css",
+    "main.js": "/munchkin_level_counter/static/js/main.5e0f4bbf.js",
     "index.html": "/munchkin_level_counter/index.html",
-    "main.012d5d6f.css.map": "/munchkin_level_counter/static/css/main.012d5d6f.css.map",
-    "main.b811f7ca.js.map": "/munchkin_level_counter/static/js/main.b811f7ca.js.map"
+    "main.b1da35aa.css.map": "/munchkin_level_counter/static/css/main.b1da35aa.css.map",
+    "main.5e0f4bbf.js.map": "/munchkin_level_counter/static/js/main.5e0f4bbf.js.map"
   },
   "entrypoints": [
-    "static/css/main.012d5d6f.css",
-    "static/js/main.b811f7ca.js"
+    "static/css/main.b1da35aa.css",
+    "static/js/main.5e0f4bbf.js"
   ]
 }
