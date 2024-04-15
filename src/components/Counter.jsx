@@ -1,40 +1,49 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { CounterContext } from './context';
+import React, { useState, useEffect } from 'react';
 import './Counter.css';
 import { Button } from 'react-bootstrap';
 import { XCircleFill } from 'react-bootstrap-icons';
-import levelUpIcon from './img/level-up.svg';
-import swordIcon from './img/sword.svg';
+import levelUpIcon from '../assets/img/level-up.svg';
+import swordIcon from '../assets/img/sword.svg';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectors, actions } from '../store/countersSlice';
 
-const Counter = ({ id, name, onRemoveHandler, showDeleteButton }) => {
-  const { updateItem } = useContext(CounterContext);
+const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
+  const dispatch = useDispatch();
+  const counters = useSelector(selectors.selectAll)
+  const { isRemoveable } = useSelector(state => state.counters);
+
   const maxLevel = 10;
   const minLevel = 1;
   const clickValue = 1;
 
-  const [levelCount, setLeverCount] = useState(minLevel);
-  const [itemsPowerCount, setItemsPowerCount] = useState(0);
+  const [levelCount, setLevelCount] = useState(lvl);
+  const [itemsPowerCount, setItemsPowerCount] = useState(itemsLvl);
   const powerCount = levelCount + itemsPowerCount;
 
-  const levelInc = () => levelCount < maxLevel ? setLeverCount(levelCount + clickValue) : null;
-  const levelDec = () => levelCount > minLevel ? setLeverCount(levelCount - clickValue) : null;
+  const levelInc = () => levelCount < maxLevel ? setLevelCount(levelCount + clickValue) : maxLevel;
+  const levelDec = () => levelCount > minLevel ? setLevelCount(levelCount - clickValue) : minLevel;
   const itemsPowerInc = () => setItemsPowerCount(itemsPowerCount + clickValue);
   const itemsPowerDec = () => itemsPowerCount > 0 ? setItemsPowerCount(itemsPowerCount - clickValue) : null;
 
   useEffect (() => {
-    updateItem(id, name, levelCount);
-  }, [levelCount]);
+    dispatch(actions.updateCounter({
+      id:id, changes: { lvl: levelCount, itemsLvl: itemsPowerCount }
+    }));
+    const filteredItems = counters.filter((_, i) => i !== id);
+    const listItems = [...filteredItems, {id, name, lvl:levelCount, itemsLvl:itemsPowerCount}];
+    window.localStorage.setItem('counters', JSON.stringify(listItems));
+  }, [levelCount, itemsPowerCount]);
 
   return (
     <div className='container w-50 p-2 my-2 text-center'>
       <div className="row d-flex">
         <div className="col-6 d-flex justify-content-start align-items-center fs-2 fw-bold">
-          {showDeleteButton && (
+          {isRemoveable && (
             <div className="mx-1 d-flex align-items-center">
-              <XCircleFill onClick={onRemoveHandler} size={36} style={{ color: 'red' }} />
+              <XCircleFill onClick={onRemove} size={36} style={{ color: 'red' }} />
             </div>
           )}
-          {name}, id: {id}
+          {name}
         </div>
         <div className="col-6 d-flex justify-content-end align-items-center gap-1">
           <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }} />

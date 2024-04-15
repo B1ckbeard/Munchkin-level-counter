@@ -3,7 +3,10 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 export const countersAdapter = createEntityAdapter();
 const initialState = countersAdapter.getInitialState({
   counters: [],
+  isRemoveable: false,
 });
+
+export const startLvl = 1;
 
 const countersSlice = createSlice({
   name: 'counters',
@@ -16,7 +19,12 @@ const countersSlice = createSlice({
     removeCounter: (state, { payload }) => {
       countersAdapter.removeOne(state, payload);
     },
-    updateCounter: countersAdapter.updateOne,
+    updateCounter: (state, { payload }) => {
+      countersAdapter.updateOne(state, payload);
+    },
+    toggleRemove: (state) => {
+      state.isRemoveable = !state.isRemoveable;
+    },
   },
 });
 
