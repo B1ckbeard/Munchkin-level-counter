@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Button, Modal, InputGroup, Form } from 'react-bootstrap';
-import { PlusLg } from 'react-bootstrap-icons';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions, startLvl } from '../store/countersSlice';
 
-const AddCounterModal = ({ onShow, onHide }) => {
-  const counters = useSelector(selectors.selectAll);
+const AddCounterModal = () => {
   const dispatch = useDispatch();
+  const counters = useSelector(selectors.selectAll);
+  const { isShowModal } = useSelector(state => state.counters);
+  const handleCloseModal = () => dispatch(actions.closeModal());
   const [titleInput, setTitleInput] = useState('');
   const [message, setMessage] = useState('');
   const [showMessage, setShowMessage] = useState(false);
@@ -38,7 +39,7 @@ const AddCounterModal = ({ onShow, onHide }) => {
 
   return (
     <>
-      <Modal show={onShow} onHide={onHide}>
+      <Modal show={isShowModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
         </Modal.Header>
         <Modal.Body className='text-center'>
@@ -54,8 +55,8 @@ const AddCounterModal = ({ onShow, onHide }) => {
           <Form.Label className='text-success mt-2'>{showMessage && message}</Form.Label>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleAddCounter} variant="success" size="lg" className='p-0 d-flex rounded-5 align-items-center'>
-            <PlusLg size={40} />
+          <Button onClick={handleAddCounter} variant="success">
+            Добавить
           </Button>
         </Modal.Footer>
       </Modal>

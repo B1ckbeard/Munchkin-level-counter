@@ -27,8 +27,8 @@ const CountersList = () => {
       <div>
         {(counters.length === 0) ? (
           <div className="empty__descr">
-            <h2 className="text-center mt-2">Список пуст</h2>
-            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите на кнопку внизу экрана</p>
+            <h2 className="text-center mt-3">Список пуст</h2>
+            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите на кнопку "Add"</p>
           </div>
         ) : (
           counters.map((counter) => (

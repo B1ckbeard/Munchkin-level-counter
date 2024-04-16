@@ -5,7 +5,6 @@
 
 .App {
     font-family: 'munchkin', sans-serif;
-    background-color: rgb(234, 221, 202);
+    background-color: rgba(248, 212, 159, 0.9);
     min-height: 100vh;
-    padding-top: 10px;
 }
