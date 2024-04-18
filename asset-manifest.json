@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Munchkin-level-counter/static/css/main.ee9e98a3.css",
-    "main.js": "/Munchkin-level-counter/static/js/main.26c3c73d.js",
+    "main.js": "/Munchkin-level-counter/static/js/main.e5379c53.js",
     "static/media/munchkin.ttf": "/Munchkin-level-counter/static/media/munchkin.88e9e4355e007fe389dd.ttf",
     "static/media/sword.svg": "/Munchkin-level-counter/static/media/sword.9f52eaf87050658f0e597d19b97b8c95.svg",
     "static/media/level-up.svg": "/Munchkin-level-counter/static/media/level-up.ab53d4d8be25e41fab36717a18717111.svg",
     "index.html": "/Munchkin-level-counter/index.html",
     "main.ee9e98a3.css.map": "/Munchkin-level-counter/static/css/main.ee9e98a3.css.map",
-    "main.26c3c73d.js.map": "/Munchkin-level-counter/static/js/main.26c3c73d.js.map"
+    "main.e5379c53.js.map": "/Munchkin-level-counter/static/js/main.e5379c53.js.map"
   },
   "entrypoints": [
     "static/css/main.ee9e98a3.css",
-    "static/js/main.26c3c73d.js"
+    "static/js/main.e5379c53.js"
   ]
 }
