@@ -9,8 +9,8 @@ import { selectors, actions } from '../store/countersSlice';
 
 const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
   const dispatch = useDispatch();
-  const counters = useSelector(selectors.selectAll)
-  const { isRemoveable } = useSelector(state => state.counters);
+  const counters = useSelector(selectors.selectAll);
+  const { isRemoveable } = useSelector((state) => state.counters);
 
   const maxLevel = 10;
   const minLevel = 1;
@@ -29,17 +29,19 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
     dispatch(actions.updateCounter({
       id:id, changes: { lvl: levelCount, itemsLvl: itemsPowerCount }
     }));
-    const filteredItems = counters.filter((_, i) => i !== id);
-    const listItems = [...filteredItems, {id, name, lvl:levelCount, itemsLvl:itemsPowerCount}];
-    window.localStorage.setItem('counters', JSON.stringify(listItems));
   }, [levelCount, itemsPowerCount]);
+
+  useEffect (()=> {
+    console.log(counters);
+    window.localStorage.setItem('counters', JSON.stringify(counters));
+  }, [counters]);
 
   return (
     <div className='container w-50 p-2 my-2 text-center'>
       <div className="row d-flex">
         <div className="col-6 d-flex justify-content-start align-items-center fs-2 fw-bold">
           {isRemoveable && (
-            <div className="mx-1 d-flex align-items-center">
+            <div className="me-2 d-flex align-items-center">
               <XCircleFill onClick={onRemove} size={36} style={{ color: 'red' }} />
             </div>
           )}
@@ -48,8 +50,8 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
         <div className="col-6 d-flex justify-content-end align-items-center gap-1">
           <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }} />
           <div className="fs-3" style={{ width: '2rem' }}>{levelCount}</div>
-          <Button onClick={() => levelInc()} variant="outline-dark" className='rounded-5 d-flex align-items-center' style={{ width: '33px', height: '33px' }}>+</Button>
-          <Button onClick={levelDec} variant="outline-dark" className='rounded-5 d-flex align-items-center' style={{ width: '33px', height: '33px' }}>-</Button>
+          <Button onClick={() => levelInc()} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center' style={{ width: '35px', height: '35px' }}>+</Button>
+          <Button onClick={levelDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center' style={{ width: '35px', height: '35px' }}>-</Button>
         </div>
       </div>
       <div className="row d-flex">
@@ -59,8 +61,8 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
         <div className="col-6 d-flex justify-content-end align-items-center gap-1">
           <img src={swordIcon} alt="swordIcon" style={{ width: '30px' }} />
           <div className="fs-3" style={{ width: '2rem' }}>{itemsPowerCount}</div>
-          <Button onClick={itemsPowerInc} variant="outline-dark" className='rounded-5 d-flex align-items-center' style={{ width: '33px', height: '33px' }}>+</Button>
-          <Button onClick={itemsPowerDec} variant="outline-dark" className='rounded-5 d-flex align-items-center' style={{ width: '33px', height: '33px' }}>-</Button>
+          <Button onClick={itemsPowerInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center' style={{ width: '35px', height: '35px' }}>+</Button>
+          <Button onClick={itemsPowerDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center' style={{ width: '35px', height: '35px' }}>-</Button>
         </div>
       </div>
     </div>

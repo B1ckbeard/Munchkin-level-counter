@@ -10,11 +10,11 @@ const Header = () => {
   const toggleShowDelete = () => dispatch(actions.toggleRemove());
 
   return (
-    <Navbar expand="lg" className="justify-content-center" style={{ borderBottom: '5px solid rgb(111, 78, 55)' }}>
-      <Navbar.Brand href="/">Munchkin level counter</Navbar.Brand>
-      <Button onClick={handleShowModal} variant="outline-dark" size="md" className='mx-2'>Add</Button>
+    <Navbar expand="lg" className="justify-content-center mb-3" style={{ backgroundColor:'rgb(93, 64, 55)' }}>
+      <Navbar.Brand href="/" style={{ color: 'rgb(244, 208, 63)'}}>Munchkin level counter</Navbar.Brand>
+      <Button onClick={handleShowModal} variant="outline-dark" size="md" className='mx-2' style={{ color: 'rgb(244, 208, 63)'}}>Add</Button>
       {counters.length !== 0 && (
-        <Button onClick={toggleShowDelete} variant="outline-dark" size="md">Delete</Button>
+        <Button onClick={toggleShowDelete} variant="outline-dark" size="md" style={{ color: 'rgb(244, 208, 63)'}}>Delete</Button>
       )}
     </Navbar>
   )

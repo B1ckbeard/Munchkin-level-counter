@@ -2,7 +2,7 @@ import { createEntityAdapter, createSlice } from '@reduxjs/toolkit';
 
 export const countersAdapter = createEntityAdapter();
 const initialState = countersAdapter.getInitialState({
-  counters: [],
+  counters: {},
   isRemoveable: false,
   isShowModal: false,
 });
@@ -19,7 +19,6 @@ const countersSlice = createSlice({
     addCounters: countersAdapter.addMany,
     removeCounter: (state, { payload }) => {
       countersAdapter.removeOne(state, payload);
-      //window.localStorage.setItem('counters', JSON.stringify(state.counters));
     },
     updateCounter: (state, { payload }) => {
       countersAdapter.updateOne(state, payload);

@@ -14,7 +14,7 @@ const CountersList = () => {
 
   const removeItem = (id) => {
     dispatch(actions.removeCounter(id));
-    const filteredItems = counters.filter((_, i) => i !== id);
+    const filteredItems = counters.filter((counnter) => counnter.id !== id);
     window.localStorage.setItem('counters', JSON.stringify(filteredItems));
   };
 

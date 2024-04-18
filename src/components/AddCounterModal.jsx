@@ -15,7 +15,6 @@ const AddCounterModal = () => {
   const addItem = (item) => {
     dispatch(actions.addCounter(item));
     const listItems = [...counters, item];
-    console.log('listItems: ', listItems);
     window.localStorage.setItem('counters', JSON.stringify(listItems));
   };
 
