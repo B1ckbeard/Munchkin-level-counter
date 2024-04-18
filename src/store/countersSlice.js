@@ -26,6 +26,12 @@ const countersSlice = createSlice({
     toggleRemove: (state) => {
       state.isRemoveable = !state.isRemoveable;
     },
+    showRemove: (state) => {
+      state.isRemoveable = true;
+    },
+    closeRemove: (state) => {
+      state.isRemoveable = false;
+    },
     showModal: (state) => {
       state.isShowModal = true;
     },
