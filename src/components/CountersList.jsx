@@ -20,6 +20,7 @@ const CountersList = () => {
 
   useEffect(() => {
     addItems();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

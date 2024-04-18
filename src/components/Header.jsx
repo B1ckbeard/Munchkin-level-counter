@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions } from '../store/countersSlice';
-import { Container, Navbar, Nav, Button } from 'react-bootstrap';
+import { Navbar, Button } from 'react-bootstrap';
 
 const Header = () => {
   const counters = useSelector(selectors.selectAll);

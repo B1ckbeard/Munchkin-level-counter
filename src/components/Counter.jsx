@@ -29,6 +29,7 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
     dispatch(actions.updateCounter({
       id:id, changes: { lvl: levelCount, itemsLvl: itemsPowerCount }
     }));
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [levelCount, itemsPowerCount]);
 
   useEffect (()=> {
