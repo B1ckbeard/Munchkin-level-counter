@@ -51,8 +51,8 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
         <div className="col-6 d-flex justify-content-end align-items-center gap-1">
           <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }} />
           <div className="fs-3" style={{ width: '2rem' }}>{levelCount}</div>
-          <Button onClick={() => levelInc()} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center' style={{ width: '35px', height: '35px' }}>+</Button>
-          <Button onClick={levelDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center' style={{ width: '35px', height: '35px' }}>-</Button>
+          <Button onClick={levelInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '35px', height: '35px' }}>+</Button>
+          <Button onClick={levelDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '35px', height: '35px' }}>-</Button>
         </div>
       </div>
       <div className="row d-flex">
@@ -62,8 +62,8 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
         <div className="col-6 d-flex justify-content-end align-items-center gap-1">
           <img src={swordIcon} alt="swordIcon" style={{ width: '30px' }} />
           <div className="fs-3" style={{ width: '2rem' }}>{itemsPowerCount}</div>
-          <Button onClick={itemsPowerInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center' style={{ width: '35px', height: '35px' }}>+</Button>
-          <Button onClick={itemsPowerDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center' style={{ width: '35px', height: '35px' }}>-</Button>
+          <Button onClick={itemsPowerInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '35px', height: '35px' }}>+</Button>
+          <Button onClick={itemsPowerDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '35px', height: '35px' }}>-</Button>
         </div>
       </div>
     </div>
