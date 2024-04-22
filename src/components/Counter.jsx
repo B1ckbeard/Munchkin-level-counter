@@ -38,10 +38,10 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
   }, [counters]);
 
   return (
-    <div className="container w-100 d-flex justify-content-center mb-3">
+    <div className="container w-100 d-flex align-items-center justify-content-center px-3 mb-3">
       <div className="counter__wrapper">
         <div className='counter__container'>
-          <div className="row d-flex">
+          <div className="row">
             <div className="col-6 d-flex justify-content-start align-items-center fs-2 fw-bold">
               {name}
             </div>
@@ -52,7 +52,7 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
               <Button onClick={levelDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '35px', height: '35px' }}>-</Button>
             </div>
           </div>
-          <div className="row d-flex">
+          <div className="row">
             <div className="col-6 d-flex justify-content-start align-items-center fs-2">
               <div className="fs-3">Сила: <span className='fw-bold'>{powerCount}</span></div>
             </div>
@@ -65,7 +65,7 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
           </div>
         </div>
         {isRemoveable && (
-          <div className="delete">
+          <div className="delete-button">
             <XCircleFill onClick={onRemove} size={28} style={{ color: 'red' }} />
           </div>
         )}

@@ -2,23 +2,22 @@
     position: relative;
     width: 500px;
     min-width: 350px;
-    //margin-bottom: 10px;
     display: flex;
     justify-content: center;
 }
 .counter__container {
     border: 4px solid rgb(93, 64, 55);
     border-radius: 14px;
-    min-width: 350px;
-    width: 500px;
-    padding: 5px;
+    width: 100%;
+    padding: 5px 15px;
     background-color:white;
     text-align: center;
 }
-.delete {
+.delete-button {
     position: absolute;
-    top: -13px;
+    top: -12px;
     right: -12px;
-    border-radius:16px;
+    border: 4px solid rgb(93, 64, 55);
+    border-radius: 18px;
     background-color:white;
 }
