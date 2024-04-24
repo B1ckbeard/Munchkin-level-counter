@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Counter from './Counter';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions } from '../store/countersSlice';
+import { PersonPlusFill } from 'react-bootstrap-icons';
 
 const CountersList = () => {
   const counters = useSelector(selectors.selectAll);
@@ -29,7 +30,7 @@ const CountersList = () => {
         {(counters.length === 0) ? (
           <div className="empty__descr">
             <h2 className="text-center mt-3">Список пуст</h2>
-            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите на кнопку "Add"</p>
+            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите на кнопку {<PersonPlusFill size={21}/>}</p>
           </div>
         ) : (
           counters.map((counter) => (

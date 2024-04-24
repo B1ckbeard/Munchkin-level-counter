@@ -39,7 +39,7 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
 
   return (
     <div className="container w-100 d-flex align-items-center justify-content-center px-3 mb-3">
-      <div className="counter__wrapper">
+      <div className="counter__wrapper shadow">
         <div className='counter__container'>
           <div className="row">
             <div className="col-6 d-flex justify-content-start align-items-center fs-2 fw-bold">
