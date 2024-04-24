@@ -50,6 +50,12 @@ const AddCounterModal = () => {
               placeholder='Введите имя'
               value={titleInput}
               onChange={(e) => setTitleInput(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  handleAddCounter();
+                }
+              }}
             />
           </InputGroup>
           <Form.Label className='text-success mt-2'>{showMessage && message}</Form.Label>
