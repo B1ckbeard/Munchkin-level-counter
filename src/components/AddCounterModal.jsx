@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
 import { Button, Modal, InputGroup, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions, startLvl } from '../store/countersSlice';
@@ -8,9 +10,15 @@ const AddCounterModal = () => {
   const counters = useSelector(selectors.selectAll);
   const { isShowModal } = useSelector(state => state.counters);
   const handleCloseModal = () => dispatch(actions.closeModal());
-  const [titleInput, setTitleInput] = useState('');
-  const [message, setMessage] = useState('');
-  const [showMessage, setShowMessage] = useState(false);
+
+  const validationSchema = Yup.object().shape({
+    name: Yup
+      .string()
+      .trim()
+      .required('Обязательное поле')
+      .min(3, 'От 3 до 18 символов')
+      .max(18, 'От 3 до 18 символов')
+  });
 
   const addItem = (item) => {
     dispatch(actions.addCounter(item));
@@ -19,52 +27,56 @@ const AddCounterModal = () => {
     window.localStorage.setItem('counters', JSON.stringify(listItems));
   };
 
-  const handleAddCounter = () => {
-    if (titleInput.trim() !== '') {
-      const newCounter = { id: counters.length, name: titleInput, lvl: startLvl, itemsLvl: 0 };
-      addItem(newCounter);
-      setTitleInput('');
-      setMessage(`Игрок с именем ${titleInput} добавлен`);
-      setShowMessage(true);
-    }
-  };
-
-  useEffect(() => {
-    if (showMessage) {
-      setTimeout(() => {
-        setShowMessage(false);
-      }, 5000);
-    }
-  }, [showMessage]);
-
   return (
     <>
       <Modal show={isShowModal} onHide={handleCloseModal}>
-        <Modal.Header closeButton>
-        </Modal.Header>
-        <Modal.Body className='text-center'>
-          <InputGroup>
-            <Form.Control
-              autoFocus={true}
-              aria-describedby="inputGroup-sizing-default"
-              placeholder='Введите имя'
-              value={titleInput}
-              onChange={(e) => setTitleInput(e.target.value)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter') {
-                  e.preventDefault();
-                  handleAddCounter();
-                }
-              }}
-            />
-          </InputGroup>
-          <Form.Label className='text-success mt-2'>{showMessage && message}</Form.Label>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={handleAddCounter} variant="success">
-            Добавить
-          </Button>
-        </Modal.Footer>
+        <Formik
+          initialValues={{
+            name: '',
+          }}
+          validationSchema={validationSchema}
+          onSubmit={(values, { resetForm }) => {
+            try {
+              const newName = {
+                id: counters.length, name: values.name.trim(), lvl: startLvl, itemsLvl: 0
+              };
+              addItem(newName);
+              resetForm();
+              handleCloseModal();
+            } catch (e) {
+              console.error(e);
+            }
+          }}
+        >
+          {({
+            errors, values, handleChange, handleSubmit,
+          }) => (
+            <Form onSubmit={handleSubmit}>
+              <Modal.Header closeButton>
+              </Modal.Header>
+              <Modal.Body className='text-center'>
+                <InputGroup>
+                  <Form.Control
+                    autoFocus={true}
+                    id="name"
+                    aria-describedby="inputGroup-sizing-default"
+                    placeholder='Введите имя'
+                    value={values.name}
+                    onChange={handleChange}
+                    isInvalid={errors.name}
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    {errors.name}
+                  </Form.Control.Feedback>
+                </InputGroup>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleCloseModal}>Отмена</Button>
+                <Button type="submit" variant="success">Добавить</Button>
+              </Modal.Footer>
+            </Form>
+          )}
+        </Formik>
       </Modal>
     </>
   )
