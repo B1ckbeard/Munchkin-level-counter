@@ -10,14 +10,14 @@
     border: 3px solid rgb(93, 64, 55);
     border-radius: 14px;
     width: 100%;
-    padding: 7px 15px;
+    padding: 7px 10px;
     background-color:white;
     text-align: center;
 }
 .delete-button {
     position: absolute;
-    top: -11px;
-    right: -11px;
+    top: -15px;
+    right: -15px;
     border: 3px solid black;
     border-radius: 18px;
     background-color:white;

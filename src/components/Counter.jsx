@@ -42,25 +42,27 @@ const Counter = ({ id, name, lvl, itemsLvl, onRemove }) => {
       <div className="counter__wrapper shadow">
         <div className='counter__container'>
           <div className="row">
-            <div className="col-6 d-flex justify-content-start align-items-center fs-2 fw-bold">
-              {name}
+            <div className="col-7 d-flex justify-content-start align-items-center pe-0">
+              <span class="d-inline-block text-truncate fs-3 fw-bold">
+                {name}
+              </span>
             </div>
-            <div className="col-6 d-flex justify-content-end align-items-center">
+            <div className="col-5 d-flex justify-content-end align-items-center">
               <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }} />
               <div className="fs-3 me-1" style={{ width: '2rem' }}>{levelCount}</div>
-              <Button onClick={levelInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1 me-1' style={{ width: '35px', height: '35px' }}>+</Button>
-              <Button onClick={levelDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '35px', height: '35px' }}>-</Button>
+              <Button onClick={levelInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1 me-1' style={{ width: '33px', height: '33px' }}>+</Button>
+              <Button onClick={levelDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '33px', height: '33px' }}>-</Button>
             </div>
           </div>
           <div className="row">
-            <div className="col-6 d-flex justify-content-start align-items-center fs-2">
+            <div className="col-7 d-flex justify-content-start align-items-center">
               <div className="fs-3">Сила: <span className='fw-bold'>{powerCount}</span></div>
             </div>
-            <div className="col-6 d-flex justify-content-end align-items-center">
+            <div className="col-5 d-flex justify-content-end align-items-center">
               <img src={swordIcon} alt="swordIcon" style={{ width: '30px' }} />
               <div className="fs-3 me-1" style={{ width: '2rem' }}>{itemsPowerCount}</div>
-              <Button onClick={itemsPowerInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1 me-1' style={{ width: '35px', height: '35px' }}>+</Button>
-              <Button onClick={itemsPowerDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '35px', height: '35px' }}>-</Button>
+              <Button onClick={itemsPowerInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1 me-1' style={{ width: '33px', height: '33px' }}>+</Button>
+              <Button onClick={itemsPowerDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '33px', height: '33px' }}>-</Button>
             </div>
           </div>
         </div>

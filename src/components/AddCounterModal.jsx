@@ -16,8 +16,8 @@ const AddCounterModal = () => {
       .string()
       .trim()
       .required('Обязательное поле')
-      .min(3, 'От 3 до 18 символов')
-      .max(18, 'От 3 до 18 символов')
+      .min(1, 'От 1 до 15 символов')
+      .max(15, 'От 1 до 15 символов')
   });
 
   const addItem = (item) => {
