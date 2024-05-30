@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Button, Modal, InputGroup, Form } from 'react-bootstrap';
+import { Button, Modal, InputGroup, Form, Carousel } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions, startLvl } from '../store/countersSlice';
+import UserAvatar from './UserAvatar';
+import { avatarList } from '../avatarList';
 
 const AddCounterModal = () => {
   const dispatch = useDispatch();
@@ -27,6 +29,12 @@ const AddCounterModal = () => {
     window.localStorage.setItem('counters', JSON.stringify(listItems));
   };
 
+  const [selectedImage, setSelectedImage] = useState(0);
+
+  const handleAvatarSelect = (selectedIndex) => {
+    setSelectedImage(selectedIndex);
+  };
+
   return (
     <>
       <Modal show={isShowModal} onHide={handleCloseModal}>
@@ -38,9 +46,10 @@ const AddCounterModal = () => {
           onSubmit={(values, { resetForm }) => {
             try {
               const newName = {
-                id: counters.length, name: values.name.trim(), lvl: startLvl, itemsLvl: 0
+                id: counters.length, name: values.name.trim(), avatar: selectedImage, lvl: startLvl, itemsLvl: 0
               };
               addItem(newName);
+              setSelectedImage(0);
               resetForm();
               handleCloseModal();
             } catch (e) {
@@ -69,6 +78,24 @@ const AddCounterModal = () => {
                     {errors.name}
                   </Form.Control.Feedback>
                 </InputGroup>
+                <br />
+                <p>Выберите аватар</p>
+                <Carousel
+                  indicators={false}
+                  className='w-50 m-auto'
+                  slide={false}
+                  data-bs-theme="dark"
+                  activeIndex={selectedImage}
+                  onSelect={handleAvatarSelect}
+                >
+                  {avatarList.map((avatar) =>
+                    <Carousel.Item key={avatar.id}>
+                      <UserAvatar
+                        src={avatar.src} />
+                      {`${avatar.id + 1} из ${avatarList.length}`}
+                    </Carousel.Item>)
+                  }
+                </Carousel>
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleCloseModal}>Отмена</Button>

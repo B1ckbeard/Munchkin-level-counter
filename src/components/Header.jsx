@@ -11,7 +11,7 @@ const Header = () => {
   const toggleShowDelete = () => dispatch(actions.toggleRemove());
 
   return (
-    <Navbar className="justify-content-center mb-3 shadow" style={{ backgroundColor:'rgb(93, 64, 55)' }}>
+    <Navbar className="justify-content-center mb-4 shadow" style={{ backgroundColor:'rgb(93, 64, 55)' }}>
       <Navbar.Brand href="/" style={{ color: 'rgb(244, 208, 63)'}}>Munchkin level counter</Navbar.Brand>
       <Button onClick={handleShowModal} variant="outline-dark" size="md" className='border-0' style={{ color: 'rgb(244, 208, 63)'}}>
         <PersonPlusFill size={25}/>

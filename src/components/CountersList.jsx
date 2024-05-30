@@ -15,7 +15,7 @@ const CountersList = () => {
 
   const removeItem = (id) => {
     dispatch(actions.removeCounter(id));
-    const filteredItems = counters.filter((counnter) => counnter.id !== id);
+    const filteredItems = counters.filter((counter) => counter.id !== id);
     window.localStorage.setItem('counters', JSON.stringify(filteredItems));
   };
 
@@ -38,6 +38,7 @@ const CountersList = () => {
               key={counter.id}
               id={counter.id}
               name={counter.name}
+              avatarId={counter.avatar}
               lvl={counter.lvl}
               itemsLvl={counter.itemsLvl}
               onRemove={() => removeItem(counter.id)}
