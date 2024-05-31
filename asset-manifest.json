@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Munchkin-level-counter/static/css/main.84bea7c4.css",
-    "main.js": "/Munchkin-level-counter/static/js/main.3f68cb82.js",
+    "main.css": "/Munchkin-level-counter/static/css/main.0b606271.css",
+    "main.js": "/Munchkin-level-counter/static/js/main.f03fdb5f.js",
     "static/media/munchkin.ttf": "/Munchkin-level-counter/static/media/munchkin.88e9e4355e007fe389dd.ttf",
     "static/media/warrior_3.jpeg": "/Munchkin-level-counter/static/media/warrior_3.bc09d207d1f6ca82b6dd.jpeg",
     "static/media/witcher.jpeg": "/Munchkin-level-counter/static/media/witcher.6f4f89ceaf7e7c0c83ce.jpeg",
@@ -16,13 +16,14 @@
     "static/media/elf.jpeg": "/Munchkin-level-counter/static/media/elf.d2943a45dd35acc6bf46.jpeg",
     "static/media/warrior.jpeg": "/Munchkin-level-counter/static/media/warrior.16846d9c66b967467d01.jpeg",
     "static/media/sword.svg": "/Munchkin-level-counter/static/media/sword.9f52eaf87050658f0e597d19b97b8c95.svg",
+    "static/media/power.svg": "/Munchkin-level-counter/static/media/power.b13e5ee8fff9c69c7b9e657fbaa2b483.svg",
     "static/media/level-up.svg": "/Munchkin-level-counter/static/media/level-up.ab53d4d8be25e41fab36717a18717111.svg",
     "index.html": "/Munchkin-level-counter/index.html",
-    "main.84bea7c4.css.map": "/Munchkin-level-counter/static/css/main.84bea7c4.css.map",
-    "main.3f68cb82.js.map": "/Munchkin-level-counter/static/js/main.3f68cb82.js.map"
+    "main.0b606271.css.map": "/Munchkin-level-counter/static/css/main.0b606271.css.map",
+    "main.f03fdb5f.js.map": "/Munchkin-level-counter/static/js/main.f03fdb5f.js.map"
   },
   "entrypoints": [
-    "static/css/main.84bea7c4.css",
-    "static/js/main.3f68cb82.js"
+    "static/css/main.0b606271.css",
+    "static/js/main.f03fdb5f.js"
   ]
 }
