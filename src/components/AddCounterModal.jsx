@@ -46,7 +46,7 @@ const AddCounterModal = () => {
           onSubmit={(values, { resetForm }) => {
             try {
               const newName = {
-                id: counters.length, name: values.name.trim(), avatar: selectedImage, lvl: startLvl, itemsLvl: 0
+                id: Date.now(), name: values.name.trim(), avatar: selectedImage, lvl: startLvl, itemsLvl: 0
               };
               addItem(newName);
               setSelectedImage(0);

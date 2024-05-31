@@ -4,6 +4,7 @@ import { Button } from 'react-bootstrap';
 import { XCircleFill } from 'react-bootstrap-icons';
 import levelUpIcon from '../assets/img/level-up.svg';
 import swordIcon from '../assets/img/sword.svg';
+import powerIcon from '../assets/img/power.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions } from '../store/countersSlice';
 import UserAvatar from './UserAvatar';
@@ -42,36 +43,58 @@ const Counter = ({ id, name, avatarId, lvl, itemsLvl, onRemove }) => {
 
   return (
     <div className="container w-100 d-flex align-items-center justify-content-center px-3 mb-3">
-      <div className="counter__wrapper shadow">
-        <div className='counter__container'>
+        <div className='counter__container shadow'>
           <div className='row d-flex align-items-center'>
             <div className="col-3 d-flex align-items-center justify-content-center">
               <UserAvatar
-                src={userAvatar.src}/>
+                src={userAvatar.src} />
             </div>
-            <div className="col-9">
+            <div className="col-9 ps-0">
               <div className="row">
-                <div className="col-6 d-flex justify-content-start align-items-center px-0">
-                  <span className="d-inline-block text-truncate fs-3 fw-bold">
+                <div className="col-6 d-flex justify-content-start px-0">
+                  <span className="d-inline-block text-truncate fs-3 fw-bold ps-1">
                     {name}
                   </span>
                 </div>
                 <div className="col-6 d-flex justify-content-end align-items-center ps-0">
                   <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }} />
-                  <div className="fs-3 me-1" style={{ width: '2rem' }}>{levelCount}</div>
-                  <Button onClick={levelInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1 me-1' style={{ width: '33px', height: '33px' }}>+</Button>
-                  <Button onClick={levelDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '33px', height: '33px' }}>-</Button>
+                  <div className="fs-3 me-1 text-center" style={{ width: '2rem' }}>{levelCount}</div>
+                  <Button onClick={levelDec} variant="outline-dark"
+                    className='rounded-5 d-flex align-items-center justify-content-center fs-1 fw-bold me-1'
+                    style={{ width: '33px', height: '33px' }}
+                  >
+                    -
+                  </Button>
+                  <Button onClick={levelInc} variant="outline-dark"
+                    className='rounded-5 d-flex align-items-center justify-content-center fs-1 fw-bold'
+                    style={{ width: '33px', height: '33px' }}
+                  >
+                    +
+                  </Button>
                 </div>
               </div>
               <div className="row">
-                <div className="col-6 d-flex justify-content-start align-items-center px-0">
-                  <div className="fs-3">Сила: <span className='fw-bold'>{powerCount}</span></div>
+                <div className="col-6 d-flex align-items-center px-0">
+                  <img src={powerIcon} alt="powerIcon" style={{ width: '30px' }} />
+                  <span className='fs-3'>
+                  {powerCount}
+                  </span>
                 </div>
                 <div className="col-6 d-flex justify-content-end align-items-center ps-0">
                   <img src={swordIcon} alt="swordIcon" style={{ width: '30px' }} />
-                  <div className="fs-3 me-1" style={{ width: '2rem' }}>{itemsPowerCount}</div>
-                  <Button onClick={itemsPowerInc} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1 me-1' style={{ width: '33px', height: '33px' }}>+</Button>
-                  <Button onClick={itemsPowerDec} variant="outline-dark" className='rounded-5 d-flex align-items-center justify-content-center fs-1' style={{ width: '33px', height: '33px' }}>-</Button>
+                  <div className="fs-3 me-1 text-center" style={{ width: '2rem' }}>{itemsPowerCount}</div>
+                  <Button onClick={itemsPowerDec} variant="outline-dark"
+                    className='rounded-5 d-flex align-items-center justify-content-center fs-1 fw-bold me-1'
+                    style={{ width: '33px', height: '33px' }}
+                  >
+                    -
+                  </Button>
+                  <Button onClick={itemsPowerInc} variant="outline-dark"
+                    className='rounded-5 d-flex align-items-center justify-content-center fs-1 fw-bold'
+                    style={{ width: '33px', height: '33px' }}
+                  >
+                    +
+                  </Button>
                 </div>
               </div>
             </div>
@@ -82,7 +105,6 @@ const Counter = ({ id, name, avatarId, lvl, itemsLvl, onRemove }) => {
             </div>
           )}
         </div>
-      </div>
     </div>
   )
 }
