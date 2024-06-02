@@ -9,19 +9,33 @@
 }
 
 .delete-button {
+    cursor: pointer;
     position: absolute;
     top: -17px;
     right: -17px;
     border: 2px solid black;
     border-radius: 18px;
     background-color:white;
+    :first-child{
+        color:red;
+    }
+    :hover{
+        :first-child{
+            color:rgb(210, 0, 0);
+        }
+    }
 }
 
 .edit-button{
+    cursor: pointer;
     position: absolute;
     top: -17px;
     right: 17px;
     border: 2px solid black;
     border-radius: 18px;
     background-color: rgb(203, 203, 203);
+    :hover{
+        background-color: rgb(150, 150, 150);
+        border-radius: 18px;
+    }
 }

@@ -52,13 +52,16 @@ const Counter = ({ data, onRemove }) => {
             <div className="col-9 ps-0">
               <div className="row">
                 <div className="col-6 d-flex justify-content-start px-0">
-                  <span className="d-inline-block text-truncate fs-3 fw-bold ps-1">
+                  <span className="d-inline-block text-truncate fs-3 fw-bold ps-1"
+                    style={{cursor: 'default'}}>
                     {name}
                   </span>
                 </div>
                 <div className="col-6 d-flex justify-content-end align-items-center ps-0">
                   <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }}/>
-                  <div className="fs-3 text-center" style={{ width: '2rem' }}>{levelCount}</div>
+                  <div className="fs-3 text-center" style={{ width: '2rem', cursor: 'default'}}>
+                    {levelCount}
+                  </div>
                   <Button onClick={levelDec} variant="outline-dark"
                     className='rounded-5 border-0 d-flex align-items-center justify-content-center'
                     style={{ width: '35px', height: '35px' }}
@@ -76,13 +79,15 @@ const Counter = ({ data, onRemove }) => {
               <div className="row">
                 <div className="col-6 d-flex align-items-center px-0">
                   <img src={powerIcon} alt="powerIcon" style={{ width: '30px' }} />
-                  <span className='fs-3'>
+                  <span className='fs-3' style={{cursor: 'default'}}>
                   {powerCount}
                   </span>
                 </div>
                 <div className="col-6 d-flex justify-content-end align-items-center ps-0">
                   <img src={swordIcon} alt="swordIcon" style={{ width: '30px' }} />
-                  <div className="fs-3 text-center" style={{ width: '2rem' }}>{itemsPowerCount}</div>
+                  <div className="fs-3 text-center" style={{ width: '2rem', cursor: 'default'}}>
+                    {itemsPowerCount}
+                  </div>
                   <Button onClick={itemsPowerDec} variant="outline-dark"
                     className='rounded-5 border-0 d-flex align-items-center justify-content-center'
                     style={{ width: '35px', height: '35px' }}
@@ -101,7 +106,7 @@ const Counter = ({ data, onRemove }) => {
           </div>
           {isRemoveable && (
             <div className="delete-button">
-              <FaCircleXmark onClick={onRemove} size={28} style={{ color: 'red' }} />
+              <FaCircleXmark onClick={onRemove} size={28}/>
             </div>
           )}
           {isRemoveable && (

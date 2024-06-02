@@ -14,7 +14,7 @@ const Header = () => {
 
   return (
     <Navbar className="justify-content-center mb-3 shadow" style={{ backgroundColor:'rgb(93, 64, 55)' }}>
-      <Navbar.Brand href="/" style={{ color: 'rgb(244, 208, 63)'}}>Munchkin level counter</Navbar.Brand>
+      <Navbar.Brand style={{ color: 'rgb(244, 208, 63)', cursor: 'default'}}>Munchkin level counter</Navbar.Brand>
       <Button onClick={handleShowAddModal} variant="outline-dark" size="md" className='border-0' style={{ color: 'rgb(244, 208, 63)'}}>
         <FaUserPlus size={25}/>
       </Button>

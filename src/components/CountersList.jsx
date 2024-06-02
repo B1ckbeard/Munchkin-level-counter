@@ -21,7 +21,7 @@ const CountersList = () => {
 
   useEffect(() => {
     addItems();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ const CountersList = () => {
         {(counters.length === 0) ? (
           <div className="empty__descr">
             <h2 className="text-center mt-3">Список пуст</h2>
-            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите {<FaUserPlus size={21}/>}</p>
+            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите {<FaUserPlus size={21} />}</p>
           </div>
         ) : (
           counters.map((counter) => (
