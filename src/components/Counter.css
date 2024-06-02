@@ -37,5 +37,8 @@
     :hover{
         background-color: rgb(150, 150, 150);
         border-radius: 18px;
+        :first-child {
+            border-radius: 18px;
+        }
     }
 }
