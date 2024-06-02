@@ -1,7 +1,7 @@
 import React from 'react';
-import CountersList from './CountersList';
-import Header from './Header';
-import ModalWindow from './Modals';
+import CountersList from '../components/CountersList';
+import Header from '../components/Header';
+import ModalWindow from '../components/Modals';
 
 const MainPage = () => {
   return (

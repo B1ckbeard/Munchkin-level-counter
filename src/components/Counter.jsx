@@ -62,13 +62,17 @@ const Counter = ({ data, onRemove }) => {
                   <div className="fs-3 text-center" style={{ width: '2rem', cursor: 'default'}}>
                     {levelCount}
                   </div>
-                  <Button onClick={levelDec} variant="outline-dark"
+                  <Button
+                    onClick={levelDec}
+                    variant="outline-dark"
                     className='rounded-5 border-0 d-flex align-items-center justify-content-center'
                     style={{ width: '35px', height: '35px' }}
                   >
                     <FaMinus/>
                   </Button>
-                  <Button onClick={levelInc} variant="outline-dark"
+                  <Button
+                    onClick={levelInc}
+                    variant="outline-dark"
                     className='rounded-5 border-0 d-flex align-items-center justify-content-center'
                     style={{ width: '35px', height: '35px' }}
                   >
@@ -88,13 +92,17 @@ const Counter = ({ data, onRemove }) => {
                   <div className="fs-3 text-center" style={{ width: '2rem', cursor: 'default'}}>
                     {itemsPowerCount}
                   </div>
-                  <Button onClick={itemsPowerDec} variant="outline-dark"
+                  <Button
+                    onClick={itemsPowerDec}
+                    variant="outline-dark"
                     className='rounded-5 border-0 d-flex align-items-center justify-content-center'
                     style={{ width: '35px', height: '35px' }}
                   >
                     <FaMinus/>
                   </Button>
-                  <Button onClick={itemsPowerInc} variant="outline-dark"
+                  <Button
+                    onClick={itemsPowerInc}
+                    variant="outline-dark"
                     className='rounded-5 border-0 d-flex align-items-center justify-content-center'
                     style={{ width: '35px', height: '35px' }}
                   >
