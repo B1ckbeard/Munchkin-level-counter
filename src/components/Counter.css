@@ -4,7 +4,7 @@
     border-radius: 14px;
     width: 400px;
     min-width: 350px;
-    padding: 7px 10px;
+    padding: 8px 8px;
     background-color:white;
 }
 
@@ -15,4 +15,13 @@
     border: 2px solid black;
     border-radius: 18px;
     background-color:white;
+}
+
+.edit-button{
+    position: absolute;
+    top: -17px;
+    right: 17px;
+    border: 2px solid black;
+    border-radius: 18px;
+    background-color: rgb(203, 203, 203);
 }

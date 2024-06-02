@@ -1,14 +1,14 @@
 import React from 'react';
 import CountersList from './CountersList';
-import AddCounterModal from './AddCounterModal';
 import Header from './Header';
+import ModalWindow from './Modals';
 
 const MainPage = () => {
   return (
     <>
       <section className='section__main'>
         <Header />
-        <AddCounterModal />
+        <ModalWindow />
         <CountersList />
       </section>
     </>

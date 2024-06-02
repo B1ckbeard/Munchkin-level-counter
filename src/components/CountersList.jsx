@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import Counter from './Counter';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions } from '../store/countersSlice';
-import { PersonPlusFill } from 'react-bootstrap-icons';
+import { FaUserPlus } from "react-icons/fa";
 
 const CountersList = () => {
   const counters = useSelector(selectors.selectAll);
@@ -24,23 +24,23 @@ const CountersList = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  useEffect(() => {
+    window.localStorage.setItem('counters', JSON.stringify(counters));
+  }, [counters]);
+
   return (
     <>
       <div>
         {(counters.length === 0) ? (
           <div className="empty__descr">
             <h2 className="text-center mt-3">Список пуст</h2>
-            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите {<PersonPlusFill size={21}/>}</p>
+            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите {<FaUserPlus size={21}/>}</p>
           </div>
         ) : (
           counters.map((counter) => (
             <Counter
               key={counter.id}
-              id={counter.id}
-              name={counter.name}
-              avatarId={counter.avatar}
-              lvl={counter.lvl}
-              itemsLvl={counter.itemsLvl}
+              data={counter}
               onRemove={() => removeItem(counter.id)}
             />
           )))

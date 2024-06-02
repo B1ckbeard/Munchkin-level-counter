@@ -4,7 +4,6 @@ export const countersAdapter = createEntityAdapter();
 const initialState = countersAdapter.getInitialState({
   counters: {},
   isRemoveable: false,
-  isShowModal: false,
 });
 
 export const startLvl = 1;
@@ -29,14 +28,8 @@ const countersSlice = createSlice({
     showRemove: (state) => {
       state.isRemoveable = true;
     },
-    closeRemove: (state) => {
+    hideRemove: (state) => {
       state.isRemoveable = false;
-    },
-    showModal: (state) => {
-      state.isShowModal = true;
-    },
-    closeModal: (state) => {
-      state.isShowModal = false;
     },
   },
 });

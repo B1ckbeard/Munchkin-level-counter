@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import './Counter.css';
-import { Button } from 'react-bootstrap';
-import { XCircleFill } from 'react-bootstrap-icons';
-import levelUpIcon from '../assets/img/level-up.svg';
-import swordIcon from '../assets/img/sword.svg';
-import powerIcon from '../assets/img/power.svg';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectors, actions } from '../store/countersSlice';
+import { actions } from '../store/countersSlice';
+import { actions as modalActions } from '../store/modalSlice';
+import { Button } from 'react-bootstrap';
+import { FaPlus, FaMinus } from "react-icons/fa";
+import { FaCircleXmark } from "react-icons/fa6";
+import { TbEditCircle } from "react-icons/tb";
+import levelUpIcon from '../assets/img/icons/level-up.svg';
+import swordIcon from '../assets/img/icons/sword.svg';
+import powerIcon from '../assets/img/icons/power.svg';
 import UserAvatar from './UserAvatar';
 import { avatarList } from '../avatarList';
 
-const Counter = ({ id, name, avatarId, lvl, itemsLvl, onRemove }) => {
+const Counter = ({ data, onRemove }) => {
+  const {id, name, avatarId, lvl, itemsLvl} = data;
   const dispatch = useDispatch();
-  const counters = useSelector(selectors.selectAll);
   const { isRemoveable } = useSelector((state) => state.counters);
-
   const userAvatar = avatarList.find((avatar) => avatar.id === avatarId);
 
   const maxLevel = 10;
@@ -30,16 +32,14 @@ const Counter = ({ id, name, avatarId, lvl, itemsLvl, onRemove }) => {
   const itemsPowerInc = () => setItemsPowerCount(itemsPowerCount + clickValue);
   const itemsPowerDec = () => itemsPowerCount > 0 ? setItemsPowerCount(itemsPowerCount - clickValue) : null;
 
+  const handleShowUpdate = () => {dispatch(modalActions.openModal({ modalType: 'update', data: data }))};
+
   useEffect(() => {
     dispatch(actions.updateCounter({
       id: id, changes: { lvl: levelCount, itemsLvl: itemsPowerCount }
     }));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [levelCount, itemsPowerCount]);
-
-  useEffect(() => {
-    window.localStorage.setItem('counters', JSON.stringify(counters));
-  }, [counters]);
 
   return (
     <div className="container w-100 d-flex align-items-center justify-content-center px-3 mb-3">
@@ -57,19 +57,19 @@ const Counter = ({ id, name, avatarId, lvl, itemsLvl, onRemove }) => {
                   </span>
                 </div>
                 <div className="col-6 d-flex justify-content-end align-items-center ps-0">
-                  <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }} />
-                  <div className="fs-3 me-1 text-center" style={{ width: '2rem' }}>{levelCount}</div>
+                  <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }}/>
+                  <div className="fs-3 text-center" style={{ width: '2rem' }}>{levelCount}</div>
                   <Button onClick={levelDec} variant="outline-dark"
-                    className='rounded-5 d-flex align-items-center justify-content-center fs-1 fw-bold me-1'
-                    style={{ width: '33px', height: '33px' }}
+                    className='rounded-5 border-0 d-flex align-items-center justify-content-center'
+                    style={{ width: '35px', height: '35px' }}
                   >
-                    -
+                    <FaMinus/>
                   </Button>
                   <Button onClick={levelInc} variant="outline-dark"
-                    className='rounded-5 d-flex align-items-center justify-content-center fs-1 fw-bold'
-                    style={{ width: '33px', height: '33px' }}
+                    className='rounded-5 border-0 d-flex align-items-center justify-content-center'
+                    style={{ width: '35px', height: '35px' }}
                   >
-                    +
+                    <FaPlus/>
                   </Button>
                 </div>
               </div>
@@ -82,18 +82,18 @@ const Counter = ({ id, name, avatarId, lvl, itemsLvl, onRemove }) => {
                 </div>
                 <div className="col-6 d-flex justify-content-end align-items-center ps-0">
                   <img src={swordIcon} alt="swordIcon" style={{ width: '30px' }} />
-                  <div className="fs-3 me-1 text-center" style={{ width: '2rem' }}>{itemsPowerCount}</div>
+                  <div className="fs-3 text-center" style={{ width: '2rem' }}>{itemsPowerCount}</div>
                   <Button onClick={itemsPowerDec} variant="outline-dark"
-                    className='rounded-5 d-flex align-items-center justify-content-center fs-1 fw-bold me-1'
-                    style={{ width: '33px', height: '33px' }}
+                    className='rounded-5 border-0 d-flex align-items-center justify-content-center'
+                    style={{ width: '35px', height: '35px' }}
                   >
-                    -
+                    <FaMinus/>
                   </Button>
                   <Button onClick={itemsPowerInc} variant="outline-dark"
-                    className='rounded-5 d-flex align-items-center justify-content-center fs-1 fw-bold'
-                    style={{ width: '33px', height: '33px' }}
+                    className='rounded-5 border-0 d-flex align-items-center justify-content-center'
+                    style={{ width: '35px', height: '35px' }}
                   >
-                    +
+                    <FaPlus/>
                   </Button>
                 </div>
               </div>
@@ -101,7 +101,12 @@ const Counter = ({ id, name, avatarId, lvl, itemsLvl, onRemove }) => {
           </div>
           {isRemoveable && (
             <div className="delete-button">
-              <XCircleFill onClick={onRemove} size={28} style={{ color: 'red' }} />
+              <FaCircleXmark onClick={onRemove} size={28} style={{ color: 'red' }} />
+            </div>
+          )}
+          {isRemoveable && (
+            <div className="edit-button">
+              <TbEditCircle onClick={handleShowUpdate} size={28} />
             </div>
           )}
         </div>

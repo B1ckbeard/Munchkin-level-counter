@@ -3,9 +3,10 @@
     align-items: center;
     justify-content: center;
 }
+
 .avatar{
     height: 70px;
     width:70px;
-    border: 1px solid black;
+    //border: 1px solid black;
     border-radius: 35px;
 }

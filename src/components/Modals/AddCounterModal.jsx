@@ -1,17 +1,15 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Button, Modal, InputGroup, Form, Carousel } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectors, actions, startLvl } from '../store/countersSlice';
-import UserAvatar from './UserAvatar';
-import { avatarList } from '../avatarList';
+import { selectors, actions, startLvl } from '../../store/countersSlice';
+import UserAvatar from '../UserAvatar';
+import { avatarList } from '../../avatarList';
 
-const AddCounterModal = () => {
+const AddCounterModal = ({ show, onHide }) => {
   const dispatch = useDispatch();
   const counters = useSelector(selectors.selectAll);
-  const { isShowModal } = useSelector(state => state.counters);
-  const handleCloseModal = () => dispatch(actions.closeModal());
 
   const validationSchema = Yup.object().shape({
     name: Yup
@@ -24,12 +22,15 @@ const AddCounterModal = () => {
 
   const addItem = (item) => {
     dispatch(actions.addCounter(item));
-    dispatch(actions.closeRemove());
     const listItems = [...counters, item];
     window.localStorage.setItem('counters', JSON.stringify(listItems));
   };
 
   const [selectedImage, setSelectedImage] = useState(0);
+
+  useEffect(()=> {
+    setSelectedImage(0);
+  }, [show])
 
   const handleAvatarSelect = (selectedIndex) => {
     setSelectedImage(selectedIndex);
@@ -37,7 +38,7 @@ const AddCounterModal = () => {
 
   return (
     <>
-      <Modal show={isShowModal} onHide={handleCloseModal}>
+      <Modal show={show} onHide={onHide}>
         <Formik
           initialValues={{
             name: '',
@@ -45,13 +46,13 @@ const AddCounterModal = () => {
           validationSchema={validationSchema}
           onSubmit={(values, { resetForm }) => {
             try {
-              const newName = {
-                id: Date.now(), name: values.name.trim(), avatar: selectedImage, lvl: startLvl, itemsLvl: 0
+              const newCounter = {
+                id: Date.now(), name: values.name.trim(), avatarId: selectedImage, lvl: startLvl, itemsLvl: 0
               };
-              addItem(newName);
-              setSelectedImage(0);
+              addItem(newCounter);
               resetForm();
-              handleCloseModal();
+              dispatch(actions.hideRemove());
+              onHide();
             } catch (e) {
               console.error(e);
             }
@@ -87,6 +88,7 @@ const AddCounterModal = () => {
                   data-bs-theme="dark"
                   activeIndex={selectedImage}
                   onSelect={handleAvatarSelect}
+                  interval={null}
                 >
                   {avatarList.map((avatar) =>
                     <Carousel.Item key={avatar.id}>
@@ -98,7 +100,7 @@ const AddCounterModal = () => {
                 </Carousel>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="secondary" onClick={handleCloseModal}>Отмена</Button>
+                <Button variant="secondary" onClick={onHide}>Отмена</Button>
                 <Button type="submit" variant="success">Добавить</Button>
               </Modal.Footer>
             </Form>

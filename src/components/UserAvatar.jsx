@@ -4,7 +4,7 @@ import './UserAvatar.css';
 const UserAvatar = ({src}) => {
   return (
     <div className='avatar__container'>
-      <img className='avatar' src={src} alt="avatar" />
+      <img className='avatar shadow-sm' src={src} alt="avatar" />
     </div>
   )
 };
