@@ -19,11 +19,6 @@
     :first-child{
         color:red;
     }
-    :hover{
-        :first-child{
-            color:rgb(210, 0, 0);
-        }
-    }
 }
 
 .edit-button{
@@ -34,11 +29,4 @@
     border: 2px solid black;
     border-radius: 18px;
     background-color: rgb(203, 203, 203);
-    :hover{
-        background-color: rgb(150, 150, 150);
-        border-radius: 18px;
-        :first-child {
-            border-radius: 18px;
-        }
-    }
 }
