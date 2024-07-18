@@ -99,7 +99,7 @@ const AddCounterModal = ({ show, onHide }) => {
                   }
                 </Carousel>
               </Modal.Body>
-              <Modal.Footer>
+              <Modal.Footer className='justify-content-center'>
                 <Button variant="secondary" onClick={onHide}>Отмена</Button>
                 <Button type="submit" variant="success">Добавить</Button>
               </Modal.Footer>

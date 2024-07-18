@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { actions as modalActions } from '../../store/modalSlice';
 import AddCounterModal from './AddCounterModal';
 import EditCounterModal from './EditCounterModal';
+import SettingsModal from './SettingsModal';
+import DiceRollModal from './DiceRollModal';
 
 const ModalWindow = () => {
   const dispatch = useDispatch();
@@ -29,6 +31,22 @@ const ModalWindow = () => {
           show={showModal}
           onHide={handleCloseModal}
           data={data}
+        />
+      );
+    }
+    case 'settings': {
+      return (
+        <SettingsModal
+          show={showModal}
+          onHide={handleCloseModal}
+        />
+      );
+    }
+    case 'roll': {
+      return (
+        <DiceRollModal
+          show={showModal}
+          onHide={handleCloseModal}
         />
       );
     }

@@ -3,6 +3,7 @@ import './Counter.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions } from '../store/countersSlice';
 import { actions as modalActions } from '../store/modalSlice';
+import { selectMaxLevel } from '../store/settingsSlice';
 import { Button } from 'react-bootstrap';
 import { FaPlus, FaMinus } from "react-icons/fa";
 import { FaCircleXmark } from "react-icons/fa6";
@@ -18,8 +19,9 @@ const Counter = ({ data, onRemove }) => {
   const dispatch = useDispatch();
   const { isRemoveable } = useSelector((state) => state.counters);
   const userAvatar = avatarList.find((avatar) => avatar.id === avatarId);
+  const maxLevel = useSelector(selectMaxLevel);
 
-  const maxLevel = 10;
+  //const maxLevel = 10;
   const minLevel = 1;
   const clickValue = 1;
 

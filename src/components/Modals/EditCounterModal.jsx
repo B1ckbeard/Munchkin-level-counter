@@ -100,9 +100,9 @@ const EditCounterModal = ({ show, onHide, data}) => {
                   }
                 </Carousel>
               </Modal.Body>
-              <Modal.Footer>
+              <Modal.Footer className='justify-content-center'>
                 <Button variant="secondary" onClick={onHide}>Отмена</Button>
-                <Button type="submit" variant="success">Добавить</Button>
+                <Button type="submit" variant="success">Сохранить</Button>
               </Modal.Footer>
             </Form>
           )}
