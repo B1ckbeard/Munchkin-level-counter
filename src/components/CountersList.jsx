@@ -23,6 +23,33 @@ const CountersList = () => {
     window.localStorage.setItem('counters', JSON.stringify(filteredItems));
   };
 
+  const getBestPlayers = (type) => {
+    if(counters.length > 1){
+      const copiedCounters = Array.from(counters);
+      switch(type){
+        case 'lvl': {
+          const sortedByLvl = copiedCounters.sort((a,b) => b.lvl - a.lvl);
+          const maxCurrentLVl = sortedByLvl[0].lvl;
+          const filteredByLvl = copiedCounters.filter(item => item.lvl === maxCurrentLVl);
+          return filteredByLvl;
+        };
+        case 'power': {
+          const sortedByPower = copiedCounters.sort((a,b) => (b.lvl+b.itemsLvl) - (a.lvl+a.itemsLvl));
+          const maxCurrentPower = sortedByPower[0].lvl + sortedByPower[0].itemsLvl;
+          const filteredByPower = copiedCounters.filter(item => (item.lvl+item.itemsLvl) === maxCurrentPower);
+          return filteredByPower;
+        };
+        case 'items': {
+          const sortedByItems = copiedCounters.sort((a,b) => b.itemsLvl - a.itemsLvl);
+          const maxCurrentItems = sortedByItems[0].itemsLvl;
+          const filteredByItems = copiedCounters.filter(item => item.itemsLvl === maxCurrentItems);
+          return filteredByItems;
+        };
+        default: return null;
+        };
+      };
+  };
+
   useEffect(() => {
     addItems();
     setLoading(false);
@@ -31,6 +58,27 @@ const CountersList = () => {
 
   useEffect(() => {
     window.localStorage.setItem('counters', JSON.stringify(counters));
+
+    const bestPlayerByLvl = getBestPlayers('lvl');
+    const bestPlayerByPower = getBestPlayers('power');
+    const bestPlayerByItems = getBestPlayers('items');
+
+    if (bestPlayerByLvl.length === 1){
+      dispatch(actions.updateBestLvlPlayer(bestPlayerByLvl[0].id));
+    } else {
+      dispatch(actions.updateBestLvlPlayer(null));
+    }
+    if (bestPlayerByPower.length === 1){
+      dispatch(actions.updateBestPowerPlayer(bestPlayerByPower[0].id));
+    } else {
+      dispatch(actions.updateBestPowerPlayer(null));
+    }
+    if (bestPlayerByItems.length === 1){
+      dispatch(actions.updateBestItemsPlayer(bestPlayerByItems[0].id));
+    } else {
+      dispatch(actions.updateBestItemsPlayer(null));
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counters]);
 
   return (
@@ -45,7 +93,8 @@ const CountersList = () => {
         ) : (counters.length === 0) ? (
           <div className="empty__descr">
             <h2 className="text-center mt-3">Список пуст</h2>
-            <p className='text-center mt-2 px-3 d-flex align-items-center justify-content-center'>Чтобы добавить игрока, нажмите
+            <p className='text-center mt-2 px-3 d-flex align-items-center justify-content-center'>
+              Чтобы добавить игрока, нажмите
               <motion.div
                 className='ms-2 d-inline-flex'
                 initial={{ scale: 1 }}
@@ -57,14 +106,14 @@ const CountersList = () => {
             </p>
           </div>
         ) : (
-          counters.map((counter) => (
-            <Counter
-              key={counter.id}
-              data={counter}
-              onRemove={() => removeItem(counter.id)}
-            />
-          )))
-        }
+            counters.map((counter) => (
+              <Counter
+                key={counter.id}
+                data={counter}
+                onRemove={() => removeItem(counter.id)}
+              />
+            ))
+        )}
       </div>
     </>
   )

@@ -4,6 +4,9 @@ export const countersAdapter = createEntityAdapter();
 const initialState = countersAdapter.getInitialState({
   counters: {},
   isRemoveable: false,
+  bestPowerPlayer: null,
+  bestLvlPlayer: null,
+  bestItemsPlayer: null,
 });
 
 export const startLvl = 1;
@@ -30,6 +33,15 @@ const countersSlice = createSlice({
     },
     hideRemove: (state) => {
       state.isRemoveable = false;
+    },
+    updateBestPowerPlayer: (state, { payload }) => {
+      state.bestPowerPlayer = payload;
+    },
+    updateBestLvlPlayer: (state, { payload }) => {
+      state.bestLvlPlayer = payload;
+    },
+    updateBestItemsPlayer: (state, { payload }) => {
+      state.bestItemsPlayer = payload;
     },
   },
 });
