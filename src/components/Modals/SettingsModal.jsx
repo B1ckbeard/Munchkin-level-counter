@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, Form, InputGroup } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, selectMaxLevel } from '../../store/settingsSlice';
+import { motion } from 'framer-motion';
 
 const SettingsModal = ({ show, onHide }) => {
   const dispatch = useDispatch();
@@ -43,11 +44,30 @@ const SettingsModal = ({ show, onHide }) => {
               value={inputValue}
               onChange={e => handleInputChange(e)}
             />
-            <Button onClick={handleSetDefaultMaxLvl} variant="success" className='mx-auto'>Сбросить</Button>
+            <motion.div
+              whileTap={{ scale: 0.8 }}
+            >
+              <Button
+                onClick={handleSetDefaultMaxLvl}
+                variant="success"
+              >
+                Сбросить
+              </Button>
+            </motion.div>
           </InputGroup>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleSaveLevel} variant="success" className='mx-auto'>Сохранить</Button>
+          <motion.div
+            className='mx-auto'
+            whileTap={{ scale: 0.8 }}
+          >
+            <Button
+              onClick={handleSaveLevel}
+              variant="success"
+            >
+              Сохранить
+            </Button>
+          </motion.div>
         </Modal.Footer>
       </Modal>
     </>

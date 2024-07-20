@@ -1,6 +1,6 @@
 .counter__container {
     position: relative;
-    border: 2px solid rgb(93, 64, 55);
+    border: 3px solid rgb(93, 64, 55);
     border-radius: 14px;
     width: 400px;
     min-width: 350px;

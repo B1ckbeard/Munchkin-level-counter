@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions } from '../store/countersSlice';
 import { FaUserPlus } from "react-icons/fa";
 import Spinner from 'react-bootstrap/Spinner';
+import { motion } from 'framer-motion';
 
 const CountersList = () => {
   const counters = useSelector(selectors.selectAll);
@@ -44,7 +45,16 @@ const CountersList = () => {
         ) : (counters.length === 0) ? (
           <div className="empty__descr">
             <h2 className="text-center mt-3">Список пуст</h2>
-            <p className='text-center mt-2 px-3'>Чтобы добавить игрока, нажмите {<FaUserPlus size={21} />}</p>
+            <p className='text-center mt-2 px-3 d-flex align-items-center justify-content-center'>Чтобы добавить игрока, нажмите
+              <motion.div
+                className='ms-2 d-inline-flex'
+                initial={{ scale: 1 }}
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 1, repeat: Infinity, ease: "linear", times: [0, 0.5, 1] }}
+              >
+                {<FaUserPlus size={21} />}
+              </motion.div>
+            </p>
           </div>
         ) : (
           counters.map((counter) => (

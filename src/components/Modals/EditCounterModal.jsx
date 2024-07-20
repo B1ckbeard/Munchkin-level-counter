@@ -6,10 +6,11 @@ import { useDispatch } from 'react-redux';
 import { actions } from '../../store/countersSlice';
 import UserAvatar from '../UserAvatar';
 import { avatarList } from '../../avatarList';
+import { motion } from 'framer-motion';
 
-const EditCounterModal = ({ show, onHide, data}) => {
+const EditCounterModal = ({ show, onHide, data }) => {
   const dispatch = useDispatch();
-  const {id, name, avatarId, lvl, itemsLvl} = data;
+  const { id, name, avatarId, lvl, itemsLvl } = data;
 
   const validationSchema = Yup.object().shape({
     name: Yup
@@ -28,9 +29,9 @@ const EditCounterModal = ({ show, onHide, data}) => {
 
   const [selectedImage, setSelectedImage] = useState(0);
 
-  useEffect (()=> {
+  useEffect(() => {
     setSelectedImage(avatarId);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [show]);
 
   const handleAvatarSelect = (selectedIndex) => {
@@ -64,6 +65,9 @@ const EditCounterModal = ({ show, onHide, data}) => {
           }) => (
             <Form onSubmit={handleSubmit}>
               <Modal.Header closeButton>
+                <Modal.Title>
+                  Редактирование персонажа
+                </Modal.Title>
               </Modal.Header>
               <Modal.Body className='text-center'>
                 <InputGroup>
@@ -101,8 +105,16 @@ const EditCounterModal = ({ show, onHide, data}) => {
                 </Carousel>
               </Modal.Body>
               <Modal.Footer className='justify-content-center'>
-                <Button variant="secondary" onClick={onHide}>Отмена</Button>
-                <Button type="submit" variant="success">Сохранить</Button>
+                <motion.div
+                  whileTap={{ scale: 0.8 }}
+                >
+                  <Button variant="secondary" onClick={onHide}>Отмена</Button>
+                </motion.div>
+                <motion.div
+                  whileTap={{ scale: 0.8 }}
+                >
+                  <Button type="submit" variant="success">Сохранить</Button>
+                </motion.div>
               </Modal.Footer>
             </Form>
           )}

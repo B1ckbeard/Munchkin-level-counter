@@ -13,9 +13,10 @@ import swordIcon from '../assets/img/icons/sword.svg';
 import powerIcon from '../assets/img/icons/power.svg';
 import UserAvatar from './UserAvatar';
 import { avatarList } from '../avatarList';
+import { motion } from 'framer-motion';
 
 const Counter = ({ data, onRemove }) => {
-  const {id, name, avatarId, lvl, itemsLvl} = data;
+  const { id, name, avatarId, lvl, itemsLvl } = data;
   const dispatch = useDispatch();
   const { isRemoveable } = useSelector((state) => state.counters);
   const userAvatar = avatarList.find((avatar) => avatar.id === avatarId);
@@ -33,7 +34,7 @@ const Counter = ({ data, onRemove }) => {
   const itemsPowerInc = () => setItemsPowerCount(itemsPowerCount + clickValue);
   const itemsPowerDec = () => itemsPowerCount > 0 ? setItemsPowerCount(itemsPowerCount - clickValue) : null;
 
-  const handleShowUpdate = () => {dispatch(modalActions.openModal({ modalType: 'update', data: data }))};
+  const handleShowUpdate = () => { dispatch(modalActions.openModal({ modalType: 'update', data: data })) };
 
   useEffect(() => {
     dispatch(actions.updateCounter({
@@ -44,86 +45,100 @@ const Counter = ({ data, onRemove }) => {
 
   return (
     <div className="container w-100 d-flex align-items-center justify-content-center px-3 mb-3">
-        <div className='counter__container shadow'>
-          <div className='row d-flex align-items-center'>
-            <div className="col-3 d-flex align-items-center justify-content-center">
-              <UserAvatar
-                src={userAvatar.src} />
-            </div>
-            <div className="col-9 ps-0">
-              <div className="row">
-                <div className="col-6 d-flex justify-content-start px-0">
-                  <span className="d-inline-block text-truncate fs-3 fw-bold ps-1"
-                    style={{cursor: 'default'}}>
-                    {name}
-                  </span>
-                </div>
-                <div className="col-6 d-flex justify-content-end align-items-center ps-0">
-                  <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }}/>
-                  <div className="fs-3 text-center" style={{ width: '2rem', cursor: 'default'}}>
-                    {levelCount}
-                  </div>
-                  <Button
-                    onClick={levelDec}
-                    variant="outline-dark"
-                    className='rounded-5 border-0 d-flex align-items-center justify-content-center'
-                    style={{ width: '35px', height: '35px' }}
-                  >
-                    <FaMinus/>
-                  </Button>
-                  <Button
-                    onClick={levelInc}
-                    variant="outline-dark"
-                    className='rounded-5 border-0 d-flex align-items-center justify-content-center'
-                    style={{ width: '35px', height: '35px' }}
-                  >
-                    <FaPlus/>
-                  </Button>
-                </div>
+      <div className='counter__container shadow'>
+        <div className='row d-flex align-items-center'>
+          <div className="col-3 d-flex align-items-center justify-content-center">
+            <UserAvatar
+              src={userAvatar.src} />
+          </div>
+          <div className="col-9 ps-0">
+            <div className="row">
+              <div className="col-6 d-flex justify-content-start px-0">
+                <span className="d-inline-block text-truncate fs-3 fw-bold ps-1"
+                  style={{ cursor: 'default' }}>
+                  {name}
+                </span>
               </div>
-              <div className="row">
-                <div className="col-6 d-flex align-items-center px-0">
-                  <img src={powerIcon} alt="powerIcon" style={{ width: '30px' }} />
-                  <span className='fs-3' style={{cursor: 'default'}}>
+              <div className="col-6 d-flex justify-content-end align-items-center ps-0">
+                <img src={levelUpIcon} alt="levelUpIcon" style={{ width: '30px' }} />
+                <div className="fs-3 text-center" style={{ width: '2rem', cursor: 'default' }}>
+                  {levelCount}
+                </div>
+                <Button
+                  onClick={levelDec}
+                  variant="outline-dark"
+                  className='rounded-5 border-0 d-flex align-items-center justify-content-center'
+                  style={{ width: '35px', height: '35px' }}
+                >
+                  <FaMinus />
+                </Button>
+                <Button
+                  onClick={levelInc}
+                  variant="outline-dark"
+                  className='rounded-5 border-0 d-flex align-items-center justify-content-center'
+                  style={{ width: '35px', height: '35px' }}
+                >
+                  <FaPlus />
+                </Button>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-6 d-flex align-items-center px-0">
+                <img src={powerIcon} alt="powerIcon" style={{ width: '30px' }} />
+                <span className='fs-3' style={{ cursor: 'default' }}>
                   {powerCount}
-                  </span>
+                </span>
+              </div>
+              <div className="col-6 d-flex justify-content-end align-items-center ps-0">
+                <img src={swordIcon} alt="swordIcon" style={{ width: '30px' }} />
+                <div className="fs-3 text-center" style={{ width: '2rem', cursor: 'default' }}>
+                  {itemsPowerCount}
                 </div>
-                <div className="col-6 d-flex justify-content-end align-items-center ps-0">
-                  <img src={swordIcon} alt="swordIcon" style={{ width: '30px' }} />
-                  <div className="fs-3 text-center" style={{ width: '2rem', cursor: 'default'}}>
-                    {itemsPowerCount}
-                  </div>
-                  <Button
-                    onClick={itemsPowerDec}
-                    variant="outline-dark"
-                    className='rounded-5 border-0 d-flex align-items-center justify-content-center'
-                    style={{ width: '35px', height: '35px' }}
-                  >
-                    <FaMinus/>
-                  </Button>
-                  <Button
-                    onClick={itemsPowerInc}
-                    variant="outline-dark"
-                    className='rounded-5 border-0 d-flex align-items-center justify-content-center'
-                    style={{ width: '35px', height: '35px' }}
-                  >
-                    <FaPlus/>
-                  </Button>
-                </div>
+                <Button
+                  onClick={itemsPowerDec}
+                  variant="outline-dark"
+                  className='rounded-5 border-0 d-flex align-items-center justify-content-center'
+                  style={{ width: '35px', height: '35px' }}
+                >
+                  <FaMinus />
+                </Button>
+                <Button
+                  onClick={itemsPowerInc}
+                  variant="outline-dark"
+                  className='rounded-5 border-0 d-flex align-items-center justify-content-center'
+                  style={{ width: '35px', height: '35px' }}
+                >
+                  <FaPlus />
+                </Button>
               </div>
             </div>
           </div>
-          {isRemoveable && (
-            <div className="delete-button">
-              <FaCircleXmark onClick={onRemove} size={28}/>
-            </div>
-          )}
-          {isRemoveable && (
-            <div className="edit-button">
-              <TbEditCircle onClick={handleShowUpdate} size={28} />
-            </div>
-          )}
         </div>
+        {isRemoveable && (
+          <>
+            <motion.div
+              className="delete-button"
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                opacity: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.8 }}>
+              <FaCircleXmark onClick={onRemove} size={28} />
+            </motion.div>
+            <motion.div
+              className="edit-button"
+              initial={{ opacity: 0.5 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                opacity: { duration: 0.3 },
+              }}
+              whileTap={{ scale: 0.8 }}>
+              <TbEditCircle onClick={handleShowUpdate} size={28} />
+            </motion.div>
+          </>
+        )}
+      </div>
     </div>
   )
 }

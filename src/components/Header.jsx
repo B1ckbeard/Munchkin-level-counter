@@ -6,6 +6,7 @@ import { Navbar, Button } from 'react-bootstrap';
 import { FaUserEdit, FaUserPlus } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 import { FaDice } from "react-icons/fa6";
+import { motion } from 'framer-motion';
 
 const Header = () => {
   const counters = useSelector(selectors.selectAll);
@@ -20,18 +21,26 @@ const Header = () => {
     <Navbar className="justify-content-center mb-3 shadow px-1" style={{ backgroundColor:'rgb(93, 64, 55)' }}>
       <Navbar.Brand className='fs-6' style={{ color: 'rgb(244, 208, 63)', cursor: 'default'}}>Munchkin level counter</Navbar.Brand>
       <Button onClick={handleShowAddModal} variant="outline-dark" size="sm" className='border-0' style={{ color: 'rgb(244, 208, 63)'}}>
-        <FaUserPlus size={25}/>
+        <motion.div whileTap={{ scale: 0.8 }}>
+          <FaUserPlus size={25}/>
+        </motion.div>
       </Button>
       {counters.length !== 0 && (
         <Button onClick={toggleShowDelete} variant="outline-dark" size="sm" className='border-0' style={{ color: 'rgb(244, 208, 63)'}}>
-          <FaUserEdit size={25}/>
+          <motion.div whileTap={{ scale: 0.8 }}>
+            <FaUserEdit size={25}/>
+          </motion.div>
         </Button>
       )}
       <Button onClick={handleShowDiceRoll} variant="outline-dark" size="sm" className='border-0' style={{ color: 'rgb(244, 208, 63)'}}>
+        <motion.div whileTap={{ scale: 0.8 }}>
           <FaDice size={25}/>
+        </motion.div>
       </Button>
       <Button onClick={handleShowSettings} variant="outline-dark" size="sm" className='border-0' style={{ color: 'rgb(244, 208, 63)'}}>
+        <motion.div whileTap={{ scale: 0.8 }}>
           <IoMdSettings size={25}/>
+        </motion.div>
       </Button>
     </Navbar>
   )

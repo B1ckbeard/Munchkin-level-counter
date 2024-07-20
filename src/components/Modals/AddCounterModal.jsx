@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectors, actions, startLvl } from '../../store/countersSlice';
 import UserAvatar from '../UserAvatar';
 import { avatarList } from '../../avatarList';
+import { motion } from 'framer-motion';
 
 const AddCounterModal = ({ show, onHide }) => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const AddCounterModal = ({ show, onHide }) => {
 
   const [selectedImage, setSelectedImage] = useState(0);
 
-  useEffect(()=> {
+  useEffect(() => {
     setSelectedImage(0);
   }, [show])
 
@@ -63,6 +64,9 @@ const AddCounterModal = ({ show, onHide }) => {
           }) => (
             <Form onSubmit={handleSubmit}>
               <Modal.Header closeButton>
+                <Modal.Title>
+                  Создание персонажа
+                </Modal.Title>
               </Modal.Header>
               <Modal.Body className='text-center'>
                 <InputGroup>
@@ -100,8 +104,16 @@ const AddCounterModal = ({ show, onHide }) => {
                 </Carousel>
               </Modal.Body>
               <Modal.Footer className='justify-content-center'>
-                <Button variant="secondary" onClick={onHide}>Отмена</Button>
-                <Button type="submit" variant="success">Добавить</Button>
+                <motion.div
+                  whileTap={{ scale: 0.8 }}
+                >
+                  <Button variant="secondary" onClick={onHide}>Отмена</Button>
+                </motion.div>
+                <motion.div
+                  whileTap={{ scale: 0.8 }}
+                >
+                  <Button type="submit" variant="success">Добавить</Button>
+                </motion.div>
               </Modal.Footer>
             </Form>
           )}
