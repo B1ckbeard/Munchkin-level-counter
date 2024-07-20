@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Munchkin-level-counter/static/css/main.1ccb2a13.css",
-    "main.js": "/Munchkin-level-counter/static/js/main.a0385f0b.js",
+    "main.css": "/Munchkin-level-counter/static/css/main.bc740e5f.css",
+    "main.js": "/Munchkin-level-counter/static/js/main.149d930b.js",
     "static/media/munchkin.ttf": "/Munchkin-level-counter/static/media/munchkin.88e9e4355e007fe389dd.ttf",
     "static/media/warrior_3.jpeg": "/Munchkin-level-counter/static/media/warrior_3.bc09d207d1f6ca82b6dd.jpeg",
     "static/media/witcher.jpeg": "/Munchkin-level-counter/static/media/witcher.6f4f89ceaf7e7c0c83ce.jpeg",
@@ -18,12 +18,13 @@
     "static/media/level-up.svg": "/Munchkin-level-counter/static/media/level-up.274b9b9d5dc17975514e41e585745271.svg",
     "static/media/sword.svg": "/Munchkin-level-counter/static/media/sword.9f52eaf87050658f0e597d19b97b8c95.svg",
     "static/media/power.svg": "/Munchkin-level-counter/static/media/power.b13e5ee8fff9c69c7b9e657fbaa2b483.svg",
+    "static/media/power-gold.svg": "/Munchkin-level-counter/static/media/power-gold.60bc2f4de3d680966d59f91c538467a1.svg",
     "index.html": "/Munchkin-level-counter/index.html",
-    "main.1ccb2a13.css.map": "/Munchkin-level-counter/static/css/main.1ccb2a13.css.map",
-    "main.a0385f0b.js.map": "/Munchkin-level-counter/static/js/main.a0385f0b.js.map"
+    "main.bc740e5f.css.map": "/Munchkin-level-counter/static/css/main.bc740e5f.css.map",
+    "main.149d930b.js.map": "/Munchkin-level-counter/static/js/main.149d930b.js.map"
   },
   "entrypoints": [
-    "static/css/main.1ccb2a13.css",
-    "static/js/main.a0385f0b.js"
+    "static/css/main.bc740e5f.css",
+    "static/js/main.149d930b.js"
   ]
 }
