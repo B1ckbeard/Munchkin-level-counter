@@ -31,19 +31,34 @@ const CountersList = () => {
           const sortedByLvl = copiedCounters.sort((a,b) => b.lvl - a.lvl);
           const maxCurrentLVl = sortedByLvl[0].lvl;
           const filteredByLvl = copiedCounters.filter(item => item.lvl === maxCurrentLVl);
-          return filteredByLvl;
+          if (filteredByLvl.length === 1){
+            dispatch(actions.updateBestLvlPlayer(filteredByLvl[0].id));
+          } else {
+            dispatch(actions.updateBestLvlPlayer(null));
+          };
+          break;
         };
         case 'power': {
           const sortedByPower = copiedCounters.sort((a,b) => (b.lvl+b.itemsLvl) - (a.lvl+a.itemsLvl));
           const maxCurrentPower = sortedByPower[0].lvl + sortedByPower[0].itemsLvl;
           const filteredByPower = copiedCounters.filter(item => (item.lvl+item.itemsLvl) === maxCurrentPower);
-          return filteredByPower;
+          if (filteredByPower.length === 1){
+            dispatch(actions.updateBestPowerPlayer(filteredByPower[0].id));
+          } else {
+            dispatch(actions.updateBestPowerPlayer(null));
+          };
+          break;
         };
         case 'items': {
           const sortedByItems = copiedCounters.sort((a,b) => b.itemsLvl - a.itemsLvl);
           const maxCurrentItems = sortedByItems[0].itemsLvl;
           const filteredByItems = copiedCounters.filter(item => item.itemsLvl === maxCurrentItems);
-          return filteredByItems;
+          if (filteredByItems.length === 1){
+            dispatch(actions.updateBestItemsPlayer(filteredByItems[0].id));
+          } else {
+            dispatch(actions.updateBestItemsPlayer(null));
+          };
+          break;
         };
         default: return null;
         };
@@ -59,24 +74,10 @@ const CountersList = () => {
   useEffect(() => {
     window.localStorage.setItem('counters', JSON.stringify(counters));
 
-    const bestPlayerByLvl = getBestPlayers('lvl');
-    const bestPlayerByPower = getBestPlayers('power');
-    const bestPlayerByItems = getBestPlayers('items');
-
-    if (bestPlayerByLvl.length === 1){
-      dispatch(actions.updateBestLvlPlayer(bestPlayerByLvl[0].id));
-    } else {
-      dispatch(actions.updateBestLvlPlayer(null));
-    }
-    if (bestPlayerByPower.length === 1){
-      dispatch(actions.updateBestPowerPlayer(bestPlayerByPower[0].id));
-    } else {
-      dispatch(actions.updateBestPowerPlayer(null));
-    }
-    if (bestPlayerByItems.length === 1){
-      dispatch(actions.updateBestItemsPlayer(bestPlayerByItems[0].id));
-    } else {
-      dispatch(actions.updateBestItemsPlayer(null));
+    if(counters.length > 1){
+      getBestPlayers('lvl');
+      getBestPlayers('power');
+      getBestPlayers('items');
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counters]);

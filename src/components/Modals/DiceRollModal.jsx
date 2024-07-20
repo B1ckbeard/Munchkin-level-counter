@@ -67,8 +67,9 @@ const DiceRollModal = ({ show, onHide }) => {
       <Modal show={show} onHide={onHide}>
         <Modal.Header closeButton>
         </Modal.Header>
-        <Modal.Body className='text-center'>
+        <Modal.Body>
           <motion.div
+            className='d-flex justify-content-center align-items-center'
             animate={isRolling ? "rolling" : "stopped"}
             variants={diceVariants}
           >
