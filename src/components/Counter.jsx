@@ -19,9 +19,8 @@ const Counter = ({ data, onRemove }) => {
   const dispatch = useDispatch();
   const { isRemoveable } = useSelector((state) => state.counters);
   const userAvatar = avatarList.find((avatar) => avatar.id === avatarId);
-  const maxLevel = useSelector(selectMaxLevel);
 
-  //const maxLevel = 10;
+  const maxLevel = useSelector(selectMaxLevel);
   const minLevel = 1;
   const clickValue = 1;
 

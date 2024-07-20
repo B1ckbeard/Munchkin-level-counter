@@ -13,7 +13,9 @@ const DiceRollModal = ({ show, onHide }) => {
   };
 
   useEffect(() => {
-      rollDice();
+    if(show) {
+      rollDice()
+    };
   }, [show]);
 
   const renderDiceIcon = () => {
