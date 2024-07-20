@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Munchkin-level-counter/static/css/main.7a45af34.css",
-    "main.js": "/Munchkin-level-counter/static/js/main.536ca167.js",
+    "main.css": "/Munchkin-level-counter/static/css/main.1ccb2a13.css",
+    "main.js": "/Munchkin-level-counter/static/js/main.a0385f0b.js",
     "static/media/munchkin.ttf": "/Munchkin-level-counter/static/media/munchkin.88e9e4355e007fe389dd.ttf",
     "static/media/warrior_3.jpeg": "/Munchkin-level-counter/static/media/warrior_3.bc09d207d1f6ca82b6dd.jpeg",
     "static/media/witcher.jpeg": "/Munchkin-level-counter/static/media/witcher.6f4f89ceaf7e7c0c83ce.jpeg",
@@ -19,11 +19,11 @@
     "static/media/sword.svg": "/Munchkin-level-counter/static/media/sword.9f52eaf87050658f0e597d19b97b8c95.svg",
     "static/media/power.svg": "/Munchkin-level-counter/static/media/power.b13e5ee8fff9c69c7b9e657fbaa2b483.svg",
     "index.html": "/Munchkin-level-counter/index.html",
-    "main.7a45af34.css.map": "/Munchkin-level-counter/static/css/main.7a45af34.css.map",
-    "main.536ca167.js.map": "/Munchkin-level-counter/static/js/main.536ca167.js.map"
+    "main.1ccb2a13.css.map": "/Munchkin-level-counter/static/css/main.1ccb2a13.css.map",
+    "main.a0385f0b.js.map": "/Munchkin-level-counter/static/js/main.a0385f0b.js.map"
   },
   "entrypoints": [
-    "static/css/main.7a45af34.css",
-    "static/js/main.536ca167.js"
+    "static/css/main.1ccb2a13.css",
+    "static/js/main.a0385f0b.js"
   ]
 }
