@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Modal, Form, InputGroup } from 'react-bootstrap';
+import { Button, Modal, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { actions, selectMaxLevel } from '../../store/settingsSlice';
 import { motion } from 'framer-motion';
@@ -7,24 +7,16 @@ import { motion } from 'framer-motion';
 const SettingsModal = ({ show, onHide }) => {
   const dispatch = useDispatch();
   const maxLevel = useSelector(selectMaxLevel);
-  const defaultMaxLvl = 10;
 
   const [inputValue, setInputValue] = useState(maxLevel);
 
-  const handleInputChange = (event) => {
-    const value = parseInt(event.target.value, 10);
-    if (!isNaN(value)) {
-      setInputValue(value);
-    }
-  };
-
-  const handleSetDefaultMaxLvl = () => {
-    setInputValue(defaultMaxLvl);
-  };
-
-  const handleSaveLevel = () => {
+  const handleSaveSettings = () => {
     dispatch(actions.changeMaxLevel(inputValue));
     onHide();
+  };
+
+  const handleRadioChange = (value) => {
+    setInputValue(value);
   };
 
   return (
@@ -33,28 +25,37 @@ const SettingsModal = ({ show, onHide }) => {
         <Modal.Header closeButton>
           <Modal.Title>Настройки</Modal.Title>
         </Modal.Header>
-        <Modal.Body className=''>
-          <InputGroup className="mb-2">
-            <InputGroup.Text id="inputMaxLevel">
-              Макс. уровень
-            </InputGroup.Text>
-            <Form.Control className=''
-              type="number"
-              id="inputMaxLevel"
-              value={inputValue}
-              onChange={e => handleInputChange(e)}
-            />
-            <motion.div
-              whileTap={{ scale: 0.8 }}
-            >
-              <Button
-                onClick={handleSetDefaultMaxLvl}
-                variant="success"
-              >
-                Сбросить
-              </Button>
-            </motion.div>
-          </InputGroup>
+        <Modal.Body>
+          <Form>
+            <p>Максимальный уровень</p>
+          <Form.Check
+            inline
+            name="group1"
+            label="10"
+            type='radio'
+            id={`radio-1`}
+            onChange={(e) => handleRadioChange(10)}
+            checked={inputValue === 10}
+          />
+          <Form.Check
+            inline
+            name="group1"
+            label="20"
+            type='radio'
+            id={`radio-2`}
+            onChange={(e) => handleRadioChange(20)}
+            checked={inputValue === 20}
+          />
+          <Form.Check
+            inline
+            name="group1"
+            label="Без ограничений"
+            type='radio'
+            id={`radio-3`}
+            onChange={(e) => handleRadioChange(1000)}
+            checked={inputValue === 1000}
+          />
+        </Form>
         </Modal.Body>
         <Modal.Footer>
           <motion.div
@@ -62,7 +63,7 @@ const SettingsModal = ({ show, onHide }) => {
             whileTap={{ scale: 0.8 }}
           >
             <Button
-              onClick={handleSaveLevel}
+              onClick={handleSaveSettings}
               variant="success"
             >
               Сохранить

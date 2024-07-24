@@ -24,45 +24,43 @@ const CountersList = () => {
   };
 
   const getBestPlayers = (type) => {
-    if(counters.length > 1){
-      const copiedCounters = Array.from(counters);
-      switch(type){
-        case 'lvl': {
-          const sortedByLvl = copiedCounters.sort((a,b) => b.lvl - a.lvl);
-          const maxCurrentLVl = sortedByLvl[0].lvl;
-          const filteredByLvl = copiedCounters.filter(item => item.lvl === maxCurrentLVl);
-          if (filteredByLvl.length === 1){
-            dispatch(actions.updateBestLvlPlayer(filteredByLvl[0].id));
-          } else {
-            dispatch(actions.updateBestLvlPlayer(null));
-          };
-          break;
+    const copiedCounters = Array.from(counters);
+    switch (type) {
+      case 'lvl': {
+        const sortedByLvl = copiedCounters.sort((a, b) => b.lvl - a.lvl);
+        const maxCurrentLVl = sortedByLvl[0].lvl;
+        const filteredByLvl = copiedCounters.filter(item => item.lvl === maxCurrentLVl);
+        if (filteredByLvl.length === 1) {
+          dispatch(actions.updateBestLvlPlayer(filteredByLvl[0].id));
+        } else {
+          dispatch(actions.updateBestLvlPlayer(null));
         };
-        case 'power': {
-          const sortedByPower = copiedCounters.sort((a,b) => (b.lvl+b.itemsLvl) - (a.lvl+a.itemsLvl));
-          const maxCurrentPower = sortedByPower[0].lvl + sortedByPower[0].itemsLvl;
-          const filteredByPower = copiedCounters.filter(item => (item.lvl+item.itemsLvl) === maxCurrentPower);
-          if (filteredByPower.length === 1){
-            dispatch(actions.updateBestPowerPlayer(filteredByPower[0].id));
-          } else {
-            dispatch(actions.updateBestPowerPlayer(null));
-          };
-          break;
-        };
-        case 'items': {
-          const sortedByItems = copiedCounters.sort((a,b) => b.itemsLvl - a.itemsLvl);
-          const maxCurrentItems = sortedByItems[0].itemsLvl;
-          const filteredByItems = copiedCounters.filter(item => item.itemsLvl === maxCurrentItems);
-          if (filteredByItems.length === 1){
-            dispatch(actions.updateBestItemsPlayer(filteredByItems[0].id));
-          } else {
-            dispatch(actions.updateBestItemsPlayer(null));
-          };
-          break;
-        };
-        default: return null;
-        };
+        break;
       };
+      case 'power': {
+        const sortedByPower = copiedCounters.sort((a, b) => (b.lvl + b.itemsLvl) - (a.lvl + a.itemsLvl));
+        const maxCurrentPower = sortedByPower[0].lvl + sortedByPower[0].itemsLvl;
+        const filteredByPower = copiedCounters.filter(item => (item.lvl + item.itemsLvl) === maxCurrentPower);
+        if (filteredByPower.length === 1) {
+          dispatch(actions.updateBestPowerPlayer(filteredByPower[0].id));
+        } else {
+          dispatch(actions.updateBestPowerPlayer(null));
+        };
+        break;
+      };
+      case 'items': {
+        const sortedByItems = copiedCounters.sort((a, b) => b.itemsLvl - a.itemsLvl);
+        const maxCurrentItems = sortedByItems[0].itemsLvl;
+        const filteredByItems = copiedCounters.filter(item => item.itemsLvl === maxCurrentItems);
+        if (filteredByItems.length === 1) {
+          dispatch(actions.updateBestItemsPlayer(filteredByItems[0].id));
+        } else {
+          dispatch(actions.updateBestItemsPlayer(null));
+        };
+        break;
+      };
+      default: return null;
+    };
   };
 
   useEffect(() => {
@@ -74,12 +72,12 @@ const CountersList = () => {
   useEffect(() => {
     window.localStorage.setItem('counters', JSON.stringify(counters));
 
-    if(counters.length > 1){
+    if (counters.length > 1) {
       getBestPlayers('lvl');
       getBestPlayers('power');
       getBestPlayers('items');
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [counters]);
 
   return (
@@ -107,13 +105,13 @@ const CountersList = () => {
             </p>
           </div>
         ) : (
-            counters.map((counter) => (
-              <Counter
-                key={counter.id}
-                data={counter}
-                onRemove={() => removeItem(counter.id)}
-              />
-            ))
+          counters.map((counter) => (
+            <Counter
+              key={counter.id}
+              data={counter}
+              onRemove={() => removeItem(counter.id)}
+            />
+          ))
         )}
       </div>
     </>
